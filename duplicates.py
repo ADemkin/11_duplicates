@@ -49,6 +49,26 @@ def get_dupes(filelist):
     return dupes
 
 
+def ask_to_delete(dupes):
+    if len(dupes) > 0:
+        answer = ''
+        while answer != 'y' or 'n':
+            answer = input('%d dupe files found. Remove them? y/n: ' % len(dupes))
+            if answer == 'y':
+                # remove all dupes
+                print('remove all dupes:')
+                for dupe in dupes:
+                    print('removing %s' % dupe)
+                    os.remove(dupe)
+                break
+            if answer == 'n':
+                # dont remove dupes
+                print('No dupes were harmed.')
+                break
+            else:
+                print('y/n: ')
+
+
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         path = sys.argv[1:]
@@ -59,23 +79,7 @@ if __name__ == "__main__":
                 # find dupes from all files
                 dupes = get_dupes(files)
                 # if dupes found, ask what to do next
-                if len(dupes) > 0:
-                    answer = ''
-                    while answer != 'y' or 'n':
-                        answer = input('%d dupe files found. Remove them? y/n: ' % len(dupes))
-                        if answer == 'y':
-                            # remove all dupes
-                            print('remove all dupes:')
-                            for dupe in dupes:
-                                print('removing %s' % dupe)
-                                os.remove(dupe)
-                            break
-                        if answer == 'n':
-                            # dont remove dupes
-                            print('No dupes were harmed.')
-                            break
-                        else:
-                            print('y/n: ')
+                ask_to_delete(dupes)
             else:
                 print('%s is not a valid path' % i)
                 sys.exit()
