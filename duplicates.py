@@ -85,5 +85,4 @@ if __name__ == "__main__":
                 sys.exit()
     else:
         print("usage: python duplicates.py [folder]")
-
         
