@@ -1,11 +1,25 @@
 # Anti-Duplicator
 
-Программа принимает на вход папку, ищет в ней дубликаты файлов и при их наличии спрашивает удалять ли их.
+This script finds all duplicate files in a given folder and prints how many files found.
 
-Использование: python duplicates.py [folder]
-
-Автор: Антон Дёмкин, 2017
+Anton Demkin, 2017
 antondemkin@yandex.ru
+
+# Quickstart:
+
+Usage:
+
+```
+python3 duplicates.py [folder]
+```
+Example:
+```
+python3 duplicates.py /Volumes/Media/Music
+16 duplicate all_files found.
+```
+
+This script requires python 3.6.0
+
 
 # Project Goals
 
