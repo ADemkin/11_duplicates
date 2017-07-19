@@ -1,12 +1,3 @@
-'''
-This script finds all dupe files in a given folder.
-File dupe is file with same size and same name.
-
-Anton Demkin, 2017
-antondemkin#yandex.ru
-
-'''
-
 import os
 import sys
 
@@ -35,17 +26,16 @@ def get_dupes(filelist):
 
 
 def main():
-    if len(sys.argv) > 1:
-        path = sys.argv[1]
-        if os.path.exists(path):
-            all_files = get_file_list(path)
-            dupes = get_dupes(all_files)
-            if len(dupes) > 0:
-                print("%d duplicate files found." % len(dupes))
-        else:
-            print('%s is not a valid path' % path)
+    path = sys.argv[1]
+    if os.path.exists(path):
+        all_files = get_file_list(path)
+        dupes = get_dupes(all_files)
+        if len(dupes) > 0:
+            print("%d duplicate files found:" % len(dupes))
+            for dupe in dupes:
+                print(dupe)
     else:
-        print("usage: python duplicates.py [folder]")
+        print('%s is not a valid path' % path)
 
 
 if __name__ == "__main__":
