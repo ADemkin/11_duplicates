@@ -24,16 +24,21 @@ def get_dupes(filelist):
             all_files.append(current)
     return dupes
 
+def print_dupes_info(dupes):
+    if len(dupes) > 0:
+        print("%d duplicate files found:" % len(dupes))
+        for dupe in dupes:
+            print(dupe)
+    else:
+        print('No duplicate files found.')
+
 
 def main():
     path = sys.argv[1]
     if os.path.exists(path):
         all_files = get_file_list(path)
         dupes = get_dupes(all_files)
-        if len(dupes) > 0:
-            print("%d duplicate files found:" % len(dupes))
-            for dupe in dupes:
-                print(dupe)
+        print_dupes_info(dupes)
     else:
         print('%s is not a valid path' % path)
 
